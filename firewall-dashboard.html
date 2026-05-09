@@ -258,6 +258,21 @@ tr:hover td{background:var(--bg-hover);}
 .mini-stat{background:var(--bg-inset);border-radius:6px;padding:8px;text-align:center;border:1px solid var(--border);}
 .ms-num{font-size:18px;font-weight:800;} .ms-lbl{font-size:9px;color:var(--text-muted);margin-top:2px;}
 
+/* HT03 TASK */
+.task-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;}
+.task-list{display:grid;gap:8px;}
+.task-step{background:var(--bg-inset);border:1px solid var(--border);border-radius:8px;padding:10px;display:flex;gap:10px;align-items:flex-start;}
+.task-step-num{width:24px;height:24px;border-radius:6px;background:rgba(232,25,44,.14);border:1px solid var(--border2);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;flex-shrink:0;}
+.task-step h4{font-size:11px;color:var(--text-bright);margin-bottom:4px;}
+.task-step p{font-size:10.5px;color:var(--text-muted);line-height:1.55;}
+.task-code{background:#050709;border:1px solid var(--border2);border-radius:8px;padding:10px 12px;font-family:Consolas,monospace;font-size:12px;color:#60a5fa;margin-top:8px;}
+.task-question{padding:8px 0;border-bottom:1px solid var(--border);font-size:10.5px;color:var(--text-main);line-height:1.5;}
+.task-question:last-child{border-bottom:none;}
+.task-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.task-flow .mini-stat{min-height:74px;display:flex;flex-direction:column;justify-content:center;}
+.task-flow .ms-num{font-size:13px;}
+@media(max-width:1050px){.task-grid,.task-flow{grid-template-columns:1fr;}}
+
 /* ── Light mode extra overrides ── */
 html.light .al.crit{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);}
 html.light .al.warn{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25);}
@@ -291,6 +306,10 @@ html.light #themeBtn:hover{background:var(--bg-hover);color:var(--text-bright);}
   <div class="nav-item active" onclick="showView('resumen',this)">
     <span class="ni"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>Resumen
     <div class="nav-tip"><h4>Resumen del Sistema</h4><p>Panel principal con KPIs globales, mapa de amenazas en tiempo real, topología de red, alertas activas y últimos eventos de política.</p><span class="tip-tag">Dashboard</span></div>
+  </div>
+  <div class="nav-item" onclick="showView('ht03',this)">
+    <span class="ni"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>HT03 Tarea<span class="nbadge y">Lab</span>
+    <div class="nav-tip"><h4>Tarea HT-03</h4><p>Implementa políticas de cortafuegos en un entorno virtualizado. Identifica componentes de reglas y valida el tráfico con logs y sesiones activas.</p><span class="tip-tag">pfSense</span><span class="tip-tag">VMware</span></div>
   </div>
   <div class="nav-sec">Seguridad</div>
   <div class="nav-item" onclick="showView('politicas',this)">
@@ -558,6 +577,15 @@ html.light #themeBtn:hover{background:var(--bg-hover);color:var(--text-bright);}
   </div>
   <!-- Eventos -->
   <div class="card">
+    <div class="ct"><span class="ct-l"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Contenido HT03 integrado</span><button class="btn btn-blue" onclick="showView('ht03', document.querySelectorAll('.nav-item')[1])">Abrir HT03</button></div>
+    <div class="g4">
+      <div class="mini-stat"><div class="ms-num" style="color:#e8192c;">HT-03</div><div class="ms-lbl">Implementa políticas de cortafuegos</div></div>
+      <div class="mini-stat"><div class="ms-num" style="color:#22c55e;">2</div><div class="ms-lbl">Operaciones de la tarea</div></div>
+      <div class="mini-stat"><div class="ms-num" style="color:#f59e0b;">pfctl</div><div class="ms-lbl">Validación por CLI pfSense</div></div>
+      <div class="mini-stat"><div class="ms-num" style="color:#3b82f6;">WAN/LAN/DMZ</div><div class="ms-lbl">Interfaces a identificar</div></div>
+    </div>
+  </div>
+  <div class="card">
     <div class="ct"><span class="ct-l"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Últimos Eventos de Política</span><span style="font-size:10px;color:#22c55e;">● En vivo</span></div>
     <div class="tw"><table><thead><tr><th>FECHA/HORA</th><th>ORIGEN</th><th>DESTINO</th><th>SERVICIO</th><th>POLÍTICA APLICADA</th><th>ACCIÓN</th><th>DESCRIPCIÓN</th></tr></thead><tbody id="evtTbody"></tbody></table></div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px;">
@@ -565,6 +593,97 @@ html.light #themeBtn:hover{background:var(--bg-hover);color:var(--text-bright);}
       <div class="mini-stat"><div class="ms-num" style="color:#ef4444;">6,187</div><div class="ms-lbl">Denegados hoy</div></div>
       <div class="mini-stat"><div class="ms-num" style="color:#f59e0b;">342</div><div class="ms-lbl">Alertas IPS</div></div>
       <div class="mini-stat"><div class="ms-num" style="color:#3b82f6;">14,961</div><div class="ms-lbl">Total eventos</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ VIEW: HT03 TAREA ═══ -->
+<div class="view" id="view-ht03">
+  <div class="sec-banner">
+    <div class="sb-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+    <div><h2>HT-03 — Implementa políticas de cortafuegos</h2>
+    <p>Curso PICD-713 Aseguramiento de Entornos Virtuales. La práctica se centra en implementar políticas de firewall dentro de una infraestructura virtualizada basada en VMware vSphere y máquinas Linux, controlando qué tráfico puede circular entre servidores y hacia el exterior.</p>
+    <div class="sb-tags"><span class="sb-tag">VMware vSphere</span><span class="sb-tag g">pfSense / FortiGate-VM</span><span class="sb-tag y">WAN · LAN · DMZ</span><span class="sb-tag p">Capa 3 y 4</span></div></div>
+  </div>
+
+  <div class="g5">
+    <div class="kpi blue"><div class="kpi-num">2</div><div class="kpi-label">Operaciones</div><div class="kpi-trend" style="color:#3b82f6;">Componentes + tráfico</div></div>
+    <div class="kpi green"><div class="kpi-num">5</div><div class="kpi-label">Criterios</div><div class="kpi-trend" style="color:#22c55e;">Origen, destino, puerto, acción, orden</div></div>
+    <div class="kpi yellow"><div class="kpi-num">pfctl</div><div class="kpi-label">Comandos CLI</div><div class="kpi-trend" style="color:#f59e0b;">-sr / -ss</div></div>
+    <div class="kpi purple"><div class="kpi-num">5</div><div class="kpi-label">Preguntas</div><div class="kpi-trend" style="color:#a855f7;">Retroalimentación</div></div>
+    <div class="kpi red"><div class="kpi-num">Deny</div><div class="kpi-label">Control final</div><div class="kpi-trend" style="color:#ef4444;">Bloquear lo no autorizado</div></div>
+  </div>
+
+  <div class="task-grid">
+    <div class="card">
+      <div class="ct"><span class="ct-l"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Objetivo de la tarea</span></div>
+      <p style="font-size:11px;color:var(--text-muted);line-height:1.65;">Al concluir la tarea, el participante estará en condiciones de implementar políticas de cortafuegos en entornos virtualizados, aplicando criterios de segmentación, control de acceso y detección de tráfico, con el fin de fortalecer la seguridad en máquinas virtuales y redes internas sin comprometer la conectividad ni el rendimiento de los servicios.</p>
+      <div class="task-flow" style="margin-top:12px;">
+        <div class="mini-stat"><div class="ms-num" style="color:#3b82f6;">WAN</div><div class="ms-lbl">Entrada y salida externa</div></div>
+        <div class="mini-stat"><div class="ms-num" style="color:#22c55e;">LAN</div><div class="ms-lbl">Red interna protegida</div></div>
+        <div class="mini-stat"><div class="ms-num" style="color:#f97316;">DMZ</div><div class="ms-lbl">Servidores web expuestos</div></div>
+        <div class="mini-stat"><div class="ms-num" style="color:#a855f7;">DB</div><div class="ms-lbl">Base de datos MySQL</div></div>
+        <div class="mini-stat"><div class="ms-num" style="color:#ef4444;">LOG</div><div class="ms-lbl">Registro de tráfico</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ct"><span class="ct-l"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg> Caso práctico</span></div>
+      <div class="al warn"><span class="al-icon">!</span><div><div class="al-title">Riesgo detectado: servidores web y base de datos en la misma red virtual</div><div class="al-sub">La auditoría indica exposición a ataques laterales y escalamiento de privilegios.</div></div></div>
+      <div class="al info"><span class="al-icon">i</span><div><div class="al-title">Decisión de ciberseguridad</div><div class="al-sub">Implementar firewall virtual de capa 3/4 integrado al hipervisor para controlar tráfico entre máquinas y hacia Internet.</div></div></div>
+      <div class="al ok"><span class="al-icon">✓</span><div><div class="al-title">Resultado esperado</div><div class="al-sub">Separar web, base de datos y administración por políticas explícitas y registro de eventos.</div></div></div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="ct"><span class="ct-l"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg> Operaciones HT03</span></div>
+      <div class="task-list">
+        <div class="task-step"><div class="task-step-num">1</div><div><h4>Identificar componentes de políticas de firewall</h4><p>Revisar interfaces de red WAN, LAN y DMZ; direcciones fuente y destino; protocolos y puertos; acción de la regla; y orden top-down de evaluación.</p></div></div>
+        <div class="task-step"><div class="task-step-num">2</div><div><h4>Identificar tráfico con las políticas</h4><p>Observar conexiones aceptadas, bloqueadas o registradas mediante los logs del firewall y la tabla de sesiones activas.</p></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ct"><span class="ct-l"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg> Validación CLI pfSense</span></div>
+      <div style="font-size:10.5px;color:var(--text-muted);line-height:1.6;">Lista las reglas activas del cortafuegos con su orden de evaluación:</div>
+      <div class="task-code">pfctl -sr</div>
+      <div style="font-size:10.5px;color:var(--text-muted);line-height:1.6;margin-top:10px;">Muestra el estado actual de sesiones que atraviesan el firewall, incluyendo IP, puertos y protocolos:</div>
+      <div class="task-code">pfctl -ss</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ct"><span class="ct-l"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> Materiales, equipos y herramientas</span></div>
+    <div class="tw"><table><thead><tr><th>CATEGORÍA</th><th>NOMBRE</th><th>CANTIDAD</th><th>USO EN EL DASHBOARD</th></tr></thead><tbody>
+      <tr><td><span class="tag blue">Material</span></td><td>Cable Ethernet virtual (vSwitch connection)</td><td>2</td><td>Conectar segmentos virtuales y tráfico inter-zona</td></tr>
+      <tr><td><span class="tag blue">Material</span></td><td>Documento de políticas de seguridad</td><td>1</td><td>Base para reglas permitidas y denegadas</td></tr>
+      <tr><td><span class="tag purple">Equipo</span></td><td>Servidor de virtualización VMware ESXi o Proxmox</td><td>1</td><td>Hipervisor donde opera el laboratorio</td></tr>
+      <tr><td><span class="tag purple">Equipo</span></td><td>Máquina virtual pfSense o FortiGate-VM</td><td>1</td><td>Firewall virtual de capa 3/4</td></tr>
+      <tr><td><span class="tag purple">Equipo</span></td><td>Servidor web Ubuntu Server</td><td>1</td><td>Servicio publicado en DMZ</td></tr>
+      <tr><td><span class="tag purple">Equipo</span></td><td>Servidor de base de datos MySQL</td><td>1</td><td>Destino protegido por reglas estrictas</td></tr>
+      <tr><td><span class="tag purple">Equipo</span></td><td>Laptop de administración</td><td>1</td><td>Acceso al panel y consola</td></tr>
+      <tr><td><span class="tag green">Herramienta</span></td><td>Navegador web</td><td>1</td><td>Acceso al panel del firewall</td></tr>
+      <tr><td><span class="tag green">Herramienta</span></td><td>Consola SSH o terminal</td><td>1</td><td>Ejecución de comandos pfctl</td></tr>
+      <tr><td><span class="tag green">Herramienta</span></td><td>Cliente VMware vSphere o Proxmox VE</td><td>1</td><td>Administración de máquinas virtuales</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="ct"><span class="ct-l"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><path d="M3 12h18"/><path d="M3 6h18"/><path d="M3 18h18"/></svg> Componentes de una política efectiva</span></div>
+      <div class="task-list">
+        <div class="task-step"><div class="task-step-num">A</div><div><h4>Interfaces y zonas</h4><p>WAN, LAN y DMZ definen desde dónde entra o sale el tráfico.</p></div></div>
+        <div class="task-step"><div class="task-step-num">B</div><div><h4>Origen, destino y servicio</h4><p>IP fuente, IP destino, protocolo y puerto acotan la regla.</p></div></div>
+        <div class="task-step"><div class="task-step-num">C</div><div><h4>Acción y registro</h4><p>Permitir, denegar y registrar permiten probar si la política funciona correctamente.</p></div></div>
+        <div class="task-step"><div class="task-step-num">D</div><div><h4>Orden top-down</h4><p>Las reglas se evalúan de arriba hacia abajo; la primera coincidencia decide el resultado.</p></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ct"><span class="ct-l"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 1 1 5.83 1c0 2-3 2-3 4"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Actividades de retroalimentación</span></div>
+      <div class="task-question">1. ¿Qué elementos constituyen una política de firewall efectiva en un entorno virtualizado?</div>
+      <div class="task-question">2. ¿Cómo se relacionan las interfaces virtuales con las reglas configuradas?</div>
+      <div class="task-question">3. ¿Cómo se puede verificar si una política de firewall está funcionando correctamente?</div>
+      <div class="task-question">4. ¿Qué criterios se deben considerar para definir una política de acceso entre servidores virtuales?</div>
+      <div class="task-question">5. ¿Cómo puede el aprendizaje obtenido mejorar la respuesta ante incidentes en entornos virtuales?</div>
     </div>
   </div>
 </div>
@@ -1384,6 +1503,7 @@ html.light #themeBtn:hover{background:var(--bg-hover);color:var(--text-bright);}
 /* ── NAVEGACIÓN ── */
 const viewTitles = {
   resumen:   ['Resumen del Sistema',       'Gestión Centralizada de Políticas y Seguridad · TechCorp S.A.'],
+  ht03:      ['Tarea HT-03',                'Implementa políticas de cortafuegos · VMware vSphere · pfSense/FortiGate-VM'],
   politicas: ['Políticas de Cortafuegos',   'Gestión de acceso por zona · Orden por prioridad · Deny-All'],
   reglas:    ['Reglas ACL',                 'Listas de control de acceso L3/L4 · Filtrado por IP/Puerto'],
   objetos:   ['Objetos de Red',             'Hosts, subredes, rangos IP y grupos de servicios reutilizables'],

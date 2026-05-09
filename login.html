@@ -266,7 +266,7 @@ body::after{content:"";position:fixed;inset:0;z-index:1;background:repeating-lin
           <div class="custom-cb"></div>
           <span class="cb-lbl">Mantener sesion</span>
         </label>
-        <a href="#" class="forgot-link" onclick="showToast('Contacte al administrador del sistema','#f59e0b');return false;">Olvido su contrasena?</a>
+        <a href="#" class="forgot-link" onclick="forgotPassword();return false;">Olvido su contrasena?</a>
       </div>
 
       <div class="err-msg" id="errMsg">Credenciales incorrectas &mdash; Acceso denegado</div>
@@ -350,6 +350,7 @@ function togglePass(){
 
 // Login
 const USERS={
+  "elias123":"f27c33e92551e7e37a94d99a12eb74623ce36f208a315c4b9634d87a9fcaf3f7",
   "admin":"8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
   "jgarcia":"a1b2c3d4e5f6789012345678901234567890123456789012345678901234567890",
   "mlopez":"b2c3d4e5f67890123456789012345678901234567890123456789012345678901",
@@ -387,6 +388,23 @@ async function doLogin(){
     }
   },900);
 }
+
+async function forgotPassword(){
+  const user=document.getElementById("userInput").value.trim();
+  if(!user){ showToast("Ingrese el usuario para recuperar la contraseña","#f59e0b"); return false; }
+  if(!USERS[user]){ showToast("Usuario no encontrado","#f59e0b"); return false; }
+  const newPass=prompt(`Nueva contraseña para ${user}:`);
+  if(newPass===null) return false;
+  if(newPass.trim().length<6){ showToast("La contraseña debe tener al menos 6 caracteres","#f59e0b"); return false; }
+  const confirmPass=prompt("Confirme la nueva contraseña:");
+  if(confirmPass===null) return false;
+  if(newPass!==confirmPass){ showToast("Las contraseñas no coinciden","#f59e0b"); return false; }
+  USERS[user]=await hashPassword(newPass);
+  showToast("Contraseña actualizada con éxito","#22c55e");
+  document.getElementById("passInput").value="";
+  return false;
+}
+
 document.addEventListener("keydown",e=>{if(e.key==="Enter")doLogin();});
 
 // Toast
